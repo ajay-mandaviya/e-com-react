@@ -1,0 +1,151 @@
+.flex-row {
+  flex-direction: row;
+}
+.text-bold {
+  font-weight: bold;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  box-shadow: 0px 0px 5px #111827;
+  background: var(--white);
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: space-between;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.search-input i {
+  font-size: 20px;
+  color: grey;
+}
+
+.search-input input {
+  border: none;
+  outline: none;
+  height: 15px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--black-color);
+  margin: 0.5rem;
+  width: 350px;
+}
+
+.nav-mobile {
+  display: none;
+}
+.nav-desktop {
+  display: block;
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+.nav-desktop > div {
+  padding: 0px 1.2rem;
+}
+
+.badge-container {
+  position: relative;
+  width: min-content;
+  cursor: pointer;
+}
+.badge-container i {
+  font-size: 1.5rem !important;
+}
+.nav-desktop p {
+  cursor: pointer;
+}
+
+.badge-notifications {
+  position: absolute;
+  top: -10px !important;
+  right: 5px !important;
+  color: var(--black);
+  font-weight: bold;
+  height: 1rem;
+  width: 1rem;
+  font-size: 0.75rem;
+  background-color: var(--dark-grey);
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.header-btn {
+  border: none;
+  background: var(--primary-color);
+  height: 2.5rem;
+  width: 8rem;
+  font-size: 16px;
+  margin-right: 2rem;
+  color: var(--white);
+  font-family: inherit;
+}
+
+.category-container {
+  margin-top: 5rem;
+  padding: 1rem;
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+}
+.category-item {
+  max-width: 13rem;
+}
+.category-item:hover {
+  transform: scale(1);
+  transition: transform 0.7s ease;
+}
+.category-item > img {
+  border-radius: 1rem;
+}
+.responsive-img {
+  max-width: 100%;
+}
+
+.category-item:hover {
+  transform: scale(1.1);
+}
+
+.text-heading-container {
+  margin: 4rem auto;
+}
+
+/* poster img */
+.poster-img-container {
+  width: 100%;
+}
+.responsive-poster-img {
+  max-width: 100%;
+}
+.text-heading-container h1 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--text-color);
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
