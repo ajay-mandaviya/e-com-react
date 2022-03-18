@@ -1,0 +1,141 @@
+.category-container {
+  margin-top: 5rem;
+  padding: 1rem;
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+}
+.category-item {
+  max-width: 13rem;
+}
+.category-item:hover {
+  transform: scale(1);
+  transition: transform 0.7s ease;
+}
+.category-item > img {
+  border-radius: 1rem;
+}
+.responsive-img {
+  max-width: 100%;
+}
+
+.category-item:hover {
+  transform: scale(1.1);
+}
+
+.text-heading-container {
+  margin: 4rem auto;
+}
+
+/* poster img */
+.poster-img-container {
+  width: 100%;
+}
+.responsive-poster-img {
+  max-width: 100%;
+}
+.text-heading-container h1 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--text-color);
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
+
+h1 span {
+  background: var(--white);
+  padding: 0 10px;
+  color: var(--text-color);
+}
+.more-item {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 3rem 0;
+}
+.card-horizontal {
+  width: 45%;
+  display: flex;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  background-color: var(--white);
+  position: relative;
+}
+.card-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-subtitle {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.card-horizontal-description {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 25px;
+  font-family: inherit;
+}
+.card-horizontal-description h2,
+h4,
+h5,
+h3 {
+  margin: 0;
+}
+.off-rate {
+  display: inline;
+  font-weight: bold;
+  padding: 0.5rem;
+  background: grey;
+  color: var(--white);
+}
+.card-horizontal > .tag-badges {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--text-color);
+  padding: 0.4rem;
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0 0.5rem;
+  }
+  .nav-mobile {
+    display: block;
+    margin-right: 2rem;
+  }
+  .nav-mobile i {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .search-input input {
+    width: 180px;
+  }
+  .nav-desktop {
+    display: none;
+  }
+  .more-item {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .card-horizontal {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-horizontal-description {
+    padding: 0;
+    margin-top: 1rem;
+  }
+}
