@@ -1,0 +1,38 @@
+.filter-container {
+  background-color: var(--white);
+  width: 20%;
+  max-width: 25rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.filter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clear-button {
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+.sidebar-filters {
+  margin-bottom: 0.5rem;
+}
+
+.prices p {
+  margin: 0 0.5rem;
+  color: grey;
+}
+.prices {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+.sidebar-filters > * label {
+  display: inline;
+}
+.input-price{
+  width: 20px;
+  margin-right: 10px;
+}
