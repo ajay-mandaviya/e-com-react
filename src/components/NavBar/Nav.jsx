@@ -2,10 +2,25 @@ import React from "react";
 import "./nav.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useStateContext } from "../../context/DataContextProvider";
+import { useAuth } from "../../context/AuthContextProvider";
+
 const Nav = () => {
+  const {
+    authUser: { token },
+    logoutAuth,
+  } = useAuth();
+  console.log("token from nav", token);
+  const {
+    data: { cart, wishList },
+  } = useStateContext();
+
   const navigate = useNavigate();
   const handleLoginNavigate = () => {
     navigate("/login");
+  };
+  const handleLogout = () => {
+    logoutAuth();
   };
   return (
     <header>
@@ -23,20 +38,34 @@ const Nav = () => {
           <i className="fa-solid fa-bars"></i>
         </div>
         <div className="nav-desktop">
-          <button className="header-btn" onClick={handleLoginNavigate}>
-            Login
-          </button>
+          {token ? (
+            <button className="header-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          ) : (
+            <button className="header-btn" onClick={handleLoginNavigate}>
+              Login
+            </button>
+          )}
 
           <div className="badge-container">
-            <Link to="/cart">
+            <Link to={token ? "wishlist" : "/login"}>
               <i className="text-gray fa-solid fa-heart"></i>
-              <div className="badge-notifications flex-center">5</div>
+              {token && (
+                <div className="badge-notifications flex-center">
+                  {wishList.length}
+                </div>
+              )}
             </Link>
           </div>
           <div className="badge-container">
-            <Link to="/wishlist">
+            <Link to={token ? "/cart" : "/login"}>
               <i className="text-gray fa-solid fa-cart-shopping"></i>
-              <div className="badge-notifications flex-center ">10</div>
+              {token && (
+                <div className="badge-notifications flex-center ">
+                  {cart.length}
+                </div>
+              )}
             </Link>
           </div>
         </div>
