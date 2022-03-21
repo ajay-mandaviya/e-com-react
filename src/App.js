@@ -12,12 +12,12 @@ import {
   SingleProduct,
 } from "./pages";
 import Mockman from "mockman-js";
-import { Nav } from "./components";
+import { Loader, Nav } from "./components";
 import { getProductApi, getCategories } from "./services/api";
 import { useStateContext } from "./context/DataContextProvider";
 
 function App() {
-  const { dispatch } = useStateContext();
+  const { isDataLoading, dispatch } = useStateContext();
 
   useEffect(() => {
     getProductApi(dispatch);
