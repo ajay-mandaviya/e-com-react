@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -12,17 +13,25 @@ import {
 } from "./pages";
 import Mockman from "mockman-js";
 import { Nav } from "./components";
+import { getProductApi, getCategories } from "./services/api";
+import { useStateContext } from "./context/DataContextProvider";
+
 function App() {
+  const { dispatch } = useStateContext();
+
+  useEffect(() => {
+    getProductApi(dispatch);
+    getCategories(dispatch);
+  }, []);
   return (
-    <div className="App">
+    <div>
       <div>
         <Nav />
       </div>
-
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/product" element={<Products />} />
-        <Route path="/product/:productId" element={<SingleProduct />} />
+        {/* <Route path="/product/:productId" element={<SingleProduct />} /> */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/profile" element={<Profile />} />
