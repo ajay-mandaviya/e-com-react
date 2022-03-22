@@ -15,14 +15,23 @@ import Mockman from "mockman-js";
 import { Loader, Nav } from "./components";
 import { getProductApi, getCategories } from "./services/api";
 import { useStateContext } from "./context/DataContextProvider";
+import { useAuth } from "./context/AuthContextProvider";
+import { getUserCart, getUserWishList } from "./services";
 
 function App() {
   const { isDataLoading, dispatch } = useStateContext();
+  const {
+    authUser: { token },
+  } = useAuth();
 
   useEffect(() => {
     getProductApi(dispatch);
     getCategories(dispatch);
-  }, []);
+    if (token) {
+      getUserCart(dispatch, token);
+      getUserWishList(dispatch, token);
+    }
+  }, [token]);
   return (
     <div>
       <div>

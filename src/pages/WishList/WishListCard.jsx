@@ -1,17 +1,27 @@
 import React from "react";
 import Rating from "../../components/Rating/Rating";
 import { MOVE_TO_CART } from "../../constant/actionTypes";
-import { useStateContext } from "../../context/DataContextProvider";
-
+import { useAuth, useStateContext } from "../../context";
+import { addToCartApi, removeToWishListApi } from "../../services";
 const WishListCard = ({ product }) => {
-  const { dispatch } = useStateContext();
+  const {
+    data: { cart },
+    dispatch,
+  } = useStateContext();
+  const {
+    authUser: { token },
+  } = useAuth();
 
+  const handleRemoveWishList = () => {
+    removeToWishListApi(dispatch, product._id, token);
+  };
   return (
     <div className="card">
       <div className="card-img">
         <img src={product.img} alt="" className="responsive-img" />
       </div>
-      <button className="action-button">
+
+      <button className="action-button" onClick={handleRemoveWishList}>
         <i className="fa-solid fa-trash-can"></i>
       </button>
       <div className="card-description">
@@ -27,7 +37,19 @@ const WishListCard = ({ product }) => {
             <h4>&#x20b9; {product.price}</h4>
           </div>
         </div>
-        <button className="card-btn">Add to cart</button>
+        {cart.some((cart) => cart._id === product._id) ? (
+          <button className="card-btn">Go to Cart</button>
+        ) : (
+          <button
+            className="card-btn"
+            onClick={() => {
+              addToCartApi(dispatch, product, token);
+              removeToWishListApi(dispatch, product._id, token);
+            }}
+          >
+            Move to Cart
+          </button>
+        )}
       </div>
     </div>
   );

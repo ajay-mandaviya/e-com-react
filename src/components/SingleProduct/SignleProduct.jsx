@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { checkIsProductInWishlist } from "../../utils/arrayFilter";
 import Rating from "../Rating/Rating";
 import "./singleProduct.css";
+import { addToCartApi, addToWishList } from "../../services";
 
 const SignleProduct = ({ product }) => {
   const navigate = useNavigate();
@@ -18,17 +19,12 @@ const SignleProduct = ({ product }) => {
     authUser: { token },
   } = useAuth();
 
-  const isInWishList = checkIsProductInWishlist(wishList, product._id);
-
   const handleAddToCart = () => {
     if (!token) {
       alert("you are not login");
       navigate("/login");
     } else {
-      dispatch({
-        type: ADD_TO_CART,
-        payload: product,
-      });
+      addToCartApi(dispatch, product, token);
     }
   };
   const handleAddToWishList = () => {
@@ -36,19 +32,17 @@ const SignleProduct = ({ product }) => {
       alert("you are not login");
       navigate("/login");
     } else {
-      dispatch({
-        type: ADD_TO_WISHLIST,
-        payload: product,
-      });
+      addToWishList(dispatch, product, token);
     }
   };
+  // console.log("cart in ", cart);
   return (
     <div className="card">
       <div className="card-img">
         <img src={product.img} alt="" className="responsive-img" />
       </div>
       <button className="btn-badge" onClick={handleAddToWishList}>
-        <i className="fas fa-heart"></i>
+        <i className="fa fa-heart"></i>
       </button>
       <div className="card-description">
         <div className="card-info">
@@ -70,7 +64,7 @@ const SignleProduct = ({ product }) => {
             )}
           </div>
         </div>
-        {cart.some((cart) => cart.id === product.id) ? (
+        {cart.some((cart) => cart._id === product._id) ? (
           <button className="card-btn" onClick={() => {}}>
             Go to cart
           </button>

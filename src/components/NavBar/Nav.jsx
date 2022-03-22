@@ -10,7 +10,7 @@ const Nav = () => {
     authUser: { token },
     logoutAuth,
   } = useAuth();
-  console.log("token from nav", token);
+
   const {
     data: { cart, wishList },
   } = useStateContext();
@@ -43,6 +43,9 @@ const Nav = () => {
               Logout
             </button>
           ) : (
+            // <div className="badge-container">
+            //   <i class="fa-solid fa-user fa-2x"></i>
+            // </div>
             <button className="header-btn" onClick={handleLoginNavigate}>
               Login
             </button>
