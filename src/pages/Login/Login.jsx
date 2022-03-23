@@ -28,8 +28,7 @@ const Login = () => {
     console.log(userLogin);
     loginWithUser(userLogin);
   };
-  // "email": "adarshbalika@gmail.com",
-  //   "password": "adarshbalika",
+
   return (
     <div className="login-page">
       <div className="login-container">

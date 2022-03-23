@@ -4,10 +4,18 @@ import {
   REMOVE_FROM_CART,
   INCREASE_CART_QUANTITY,
 } from "../../constant/actionTypes";
+import { useAuth } from "../../context/AuthContextProvider";
 import { useStateContext } from "../../context/DataContextProvider";
+import { addToWishList, removeFromcartApi } from "../../services";
 
 const CartProduct = ({ product }) => {
-  const { dispatch } = useStateContext();
+  const {
+    data: { isDataLoading },
+    dispatch,
+  } = useStateContext();
+  const {
+    authUser: { token },
+  } = useAuth();
 
   return (
     <div className="card-horizontal">
@@ -37,21 +45,16 @@ const CartProduct = ({ product }) => {
           <button
             className="card-btn"
             onClick={() => {
-              dispatch({
-                type: REMOVE_FROM_CART,
-                payload: product,
-              });
+              removeFromcartApi(dispatch, product._id, token);
             }}
           >
-            Remove From Cart
+            {isDataLoading ? "Removing..." : " Remove From Cart"}
           </button>
           <button
             className="card-btn-outline"
             onClick={() => {
-              dispatch({
-                type: MOVE_TO_WISHLIST,
-                payload: product,
-              });
+              addToWishList(dispatch, product, token);
+              removeFromcartApi(dispatch, product._id, token);
             }}
           >
             Move to Wishlist
