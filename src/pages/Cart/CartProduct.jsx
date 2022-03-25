@@ -6,8 +6,11 @@ import {
 } from "../../constant/actionTypes";
 import { useAuth } from "../../context/AuthContextProvider";
 import { useStateContext } from "../../context/DataContextProvider";
-import { addToWishList, removeFromcartApi } from "../../services";
-
+import {
+  addToWishList,
+  removeFromcartApi,
+  updateCartQty,
+} from "../../services";
 const CartProduct = ({ product }) => {
   const {
     data: { isDataLoading },
@@ -36,8 +39,14 @@ const CartProduct = ({ product }) => {
           <span>Quantity</span>
           <div className="manage-item-buttons">
             <button className="">-</button>
-            <span>1</span>
-            <button>+</button>
+            <span>{product.qty}</span>
+            <button
+              onClick={() => {
+                updateCartQty("QTY_INCREMENT", dispatch, product._id, token);
+              }}
+            >
+              +
+            </button>
           </div>
         </div>
 

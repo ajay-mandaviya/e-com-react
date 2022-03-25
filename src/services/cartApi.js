@@ -76,3 +76,34 @@ export const removeFromcartApi = async (dispatch, id, token) => {
     console.log("Error in updateQtyFromCart service", error);
   }
 };
+
+export const updateCartQty = async (action, dispatch, id, token) => {
+  console.log("id inside the api", id);
+  console.log("action inside the api", action);
+  try {
+    const {
+      data: { cart },
+    } = await axios.post(
+      `/api/user/cart/${id}`,
+
+      {
+        action: {
+          type: "increment ",
+        },
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+
+    console.log("response is", cart);
+    dispatch({
+      type: "INC",
+      payload: cart,
+    });
+  } catch (error) {
+    console.log("Erro in update qtyr", error);
+  }
+};

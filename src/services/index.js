@@ -1,5 +1,10 @@
 import { signupApi } from "./authApi";
-import { addToCartApi, getUserCart, removeFromcartApi } from "./cartApi";
+import {
+  addToCartApi,
+  getUserCart,
+  removeFromcartApi,
+  updateCartQty,
+} from "./cartApi";
 import {
   addToWishList,
   getUserWishList,
@@ -7,6 +12,7 @@ import {
 } from "./wishListApi";
 
 export {
+  updateCartQty,
   signupApi,
   getUserCart,
   getUserWishList,
