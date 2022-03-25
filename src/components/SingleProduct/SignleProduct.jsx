@@ -6,7 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { checkIsProductInWishlist } from "../../utils/arrayFilter";
 import Rating from "../Rating/Rating";
 import "./singleProduct.css";
-import { addToCartApi, addToWishList } from "../../services";
+import {
+  addToCartApi,
+  addToWishList,
+  removeToWishListApi,
+} from "../../services";
 
 const SignleProduct = ({ product }) => {
   const navigate = useNavigate();
@@ -35,15 +39,26 @@ const SignleProduct = ({ product }) => {
       addToWishList(dispatch, product, token);
     }
   };
-  // console.log("cart in ", cart);
+  const removeWishList = () => {
+    removeToWishListApi(dispatch, product._id, token);
+  };
   return (
     <div className="card">
       <div className="card-img">
         <img src={product.img} alt="" className="responsive-img" />
       </div>
-      <button className="btn-badge" onClick={handleAddToWishList}>
-        <i className="fa fa-heart"></i>
-      </button>
+      {wishList.some(
+        (wishListProduct) => wishListProduct._id === product._id
+      ) ? (
+        <button className="btn-badge" onClick={removeWishList}>
+          <i className="fa fa-heart"></i>
+        </button>
+      ) : (
+        <button className="btn-badge" onClick={handleAddToWishList}>
+          <i className="fa-regular fa-heart"></i>
+        </button>
+      )}
+
       <div className="card-description">
         <div className="card-info">
           <h2 className="card-title">{product.name}</h2>
