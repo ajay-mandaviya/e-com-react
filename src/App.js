@@ -17,6 +17,7 @@ import { getProductApi, getCategories } from "./services/api";
 import { useStateContext } from "./context/DataContextProvider";
 import { useAuth } from "./context/AuthContextProvider";
 import { getUserCart, getUserWishList } from "./services";
+import { ProtectedRoutes } from "./pages/ProtectedRoutes";
 
 function App() {
   const { isDataLoading, dispatch } = useStateContext();
@@ -41,12 +42,32 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/product" element={<Products />} />
         {/* <Route path="/product/:productId" element={<SingleProduct />} /> */}
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<WishList />} />
-        <Route path="/profile" element={<Profile />} />
+
+        <Route path="/mock" element={<Mockman />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/mock" element={<Mockman />} />
+
+        <Route
+          path="/wishlist"
+          element={
+            <ProtectedRoutes>
+              <WishList />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoutes>
+              <Cart />
+            </ProtectedRoutes>
+          }
+        />
+
+        {/* <Route path="/cart" element={<ProtectedRoutes />}> */}
+        {/* <Route path="/wishlist" element={<WishList />} /> */}
+        {/* <Route path="/profile" element={<Profile />} /> */}
       </Routes>
     </div>
   );

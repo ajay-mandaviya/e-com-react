@@ -52,7 +52,7 @@ const Nav = () => {
           )}
 
           <div className="badge-container">
-            <Link to={token ? "wishlist" : "/login"}>
+            <Link to={"/wishlist"}>
               <i className="text-gray fa-solid fa-heart"></i>
               {token && (
                 <div className="badge-notifications flex-center">
@@ -62,7 +62,7 @@ const Nav = () => {
             </Link>
           </div>
           <div className="badge-container">
-            <Link to={token ? "/cart" : "/login"}>
+            <Link to={"/cart"}>
               <i className="text-gray fa-solid fa-cart-shopping"></i>
               {token && (
                 <div className="badge-notifications flex-center ">

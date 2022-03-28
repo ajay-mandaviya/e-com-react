@@ -30,6 +30,14 @@ export const productReducer = (state, action) => {
         ...state,
         wishList: action.payload,
       };
+
+    case "INC":
+      console.log("payload inside thr cart", action.payload);
+      return {
+        ...state,
+        cart: action.payload,
+      };
+
     case INITIALIZE_PRODUCTS:
       return {
         ...state,
