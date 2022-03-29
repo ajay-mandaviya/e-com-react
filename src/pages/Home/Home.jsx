@@ -4,8 +4,10 @@ import "./home.css";
 import { staticCategory, categoryData } from "../../constant/data";
 import { mainbanner_1 } from "../../assets";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../../hooks";
 
 const Home = () => {
+  useDocumentTitle("Men's Shop")
   return (
     <>
       <div className="category-container">
