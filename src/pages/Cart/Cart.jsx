@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useStateContext } from "../../context/DataContextProvider";
+import { useDocumentTitle } from "../../hooks";
 import "./cart.css";
 import CartProduct from "./CartProduct";
 import OrderSummary from "./OrderSummary";
@@ -9,6 +10,8 @@ const Cart = () => {
     data: { cart },
     dispatch,
   } = useStateContext();
+
+  useDocumentTitle("Shopping Cart");
 
   return (
     <div className="cart-page">
