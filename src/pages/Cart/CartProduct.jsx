@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   MOVE_TO_WISHLIST,
   REMOVE_FROM_CART,
@@ -11,15 +12,17 @@ import {
   removeFromcartApi,
   updateCartQty,
 } from "../../services";
+
 const CartProduct = ({ product }) => {
+  const navigate = useNavigate();
   const {
-    data: { isDataLoading },
+    data: { isDataLoading, wishList },
     dispatch,
   } = useStateContext();
   const {
     authUser: { token },
   } = useAuth();
-
+  console.log("wishlist in cart", wishList);
   return (
     <div className="card-horizontal">
       <div className="card-img">
@@ -38,7 +41,14 @@ const CartProduct = ({ product }) => {
         <div className="manage-item flex">
           <span>Quantity</span>
           <div className="manage-item-buttons">
-            <button className="">-</button>
+            <button
+              disabled={product.qty <= 1}
+              onClick={() => {
+                updateCartQty("QTY_DECREMENT", dispatch, product._id, token);
+              }}
+            >
+              -
+            </button>
             <span>{product.qty}</span>
             <button
               onClick={() => {
@@ -57,17 +67,31 @@ const CartProduct = ({ product }) => {
               removeFromcartApi(dispatch, product._id, token);
             }}
           >
-            {isDataLoading ? "Removing..." : " Remove From Cart"}
+            Remove From Cart
           </button>
-          <button
-            className="card-btn-outline"
-            onClick={() => {
-              addToWishList(dispatch, product, token);
-              removeFromcartApi(dispatch, product._id, token);
-            }}
-          >
-            Move to Wishlist
-          </button>
+
+          {wishList.some(
+            (WishListproduct) => WishListproduct._id === product._id
+          ) ? (
+            <button
+              className="card-btn-outline"
+              onClick={() => {
+                navigate("/wishlist");
+              }}
+            >
+              Already In WishList
+            </button>
+          ) : (
+            <button
+              className="card-btn-outline"
+              onClick={() => {
+                addToWishList(dispatch, product, token);
+                removeFromcartApi(dispatch, product._id, token);
+              }}
+            >
+              Move to Wishlist
+            </button>
+          )}
         </div>
       </div>
     </div>
