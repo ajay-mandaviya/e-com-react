@@ -38,7 +38,7 @@ export const products = [
     price: 1374,
     img: "https://img.mensxp.com/media/shop/catalog/products/B/771097/black-hearts-and-blocks-pattern-printed-casual-shirt-156819-default.jpg?w=500&h=700&cc=1&q=75",
     infoTitle: "Half Sleeve Cotton Shirt",
-    inStock: false,
+    inStock: true,
     fastDelivery: false,
     categoryName: "shirt",
     rating: 3,

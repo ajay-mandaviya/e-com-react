@@ -1,16 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import {
-  Cart,
-  Home,
-  Login,
-  Products,
-  Profile,
-  Signup,
-  WishList,
-  SingleProduct,
-} from "./pages";
+import { Cart, Home, Login, Products, Signup, WishList } from "./pages";
 import Mockman from "mockman-js";
 import { Loader, Nav } from "./components";
 import { getProductApi, getCategories } from "./services/api";
@@ -20,7 +11,7 @@ import { getUserCart, getUserWishList } from "./services";
 import { ProtectedRoutes } from "./pages/ProtectedRoutes";
 
 function App() {
-  const { isDataLoading, dispatch } = useStateContext();
+  const { dispatch } = useStateContext();
   const {
     authUser: { token },
   } = useAuth();
@@ -34,14 +25,11 @@ function App() {
     }
   }, [token]);
   return (
-    <div>
-      <div>
-        <Nav />
-      </div>
+    <>
+      <Nav />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/product" element={<Products />} />
-        {/* <Route path="/product/:productId" element={<SingleProduct />} /> */}
 
         <Route path="/mock" element={<Mockman />} />
 
@@ -64,12 +52,8 @@ function App() {
             </ProtectedRoutes>
           }
         />
-
-        {/* <Route path="/cart" element={<ProtectedRoutes />}> */}
-        {/* <Route path="/wishlist" element={<WishList />} /> */}
-        {/* <Route path="/profile" element={<Profile />} /> */}
       </Routes>
-    </div>
+    </>
   );
 }
 
