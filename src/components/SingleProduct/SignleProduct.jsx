@@ -80,7 +80,12 @@ const SignleProduct = ({ product }) => {
           </div>
         </div>
         {cart.some((cart) => cart._id === product._id) ? (
-          <button className="card-btn" onClick={() => {}}>
+          <button
+            className="card-btn"
+            onClick={() => {
+              navigate("/cart");
+            }}
+          >
             Go to cart
           </button>
         ) : (
