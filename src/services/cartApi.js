@@ -19,7 +19,6 @@ export const getUserCart = async (dispatch, token) => {
       type: SET_CART,
       payload: cart,
     });
-    console.log("cart is ", cart);
   } catch (error) {
     console.log("Error in get User cart", error);
   }
@@ -41,7 +40,7 @@ export const addToCartApi = async (dispatch, product, token) => {
         },
       }
     );
-    console.log("cart after api", cart);
+
     dispatch({
       type: ADD_TO_CART,
       payload: cart,
@@ -88,7 +87,7 @@ export const updateCartQty = async (action, dispatch, id, token) => {
 
       {
         action: {
-          type: "increment ",
+          type: action === "QTY_INCREMENT" ? "increment" : "decrement",
         },
       },
       {
@@ -98,7 +97,6 @@ export const updateCartQty = async (action, dispatch, id, token) => {
       }
     );
 
-    console.log("response is", cart);
     dispatch({
       type: "INC",
       payload: cart,

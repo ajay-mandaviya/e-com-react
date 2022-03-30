@@ -28,7 +28,7 @@ const AuthContextProvider = ({ children }) => {
         type: SET_USER,
         payload: user.userName,
       });
-  }, []);
+  }, [authUser.token]);
 
   const loginWithUser = async (values) => {
     try {

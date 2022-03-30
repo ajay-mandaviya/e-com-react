@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import { Filters, Loader, SignleProduct } from "../../components";
 import "./product.css";
 import { useStateContext } from "../../context/DataContextProvider";
-
+import { useDocumentTitle } from "../../hooks";
 const Products = () => {
+  useDocumentTitle("Men's Shop");
+
   const {
     data: { product, isDataLoading },
     filterState: {
@@ -49,8 +51,12 @@ const Products = () => {
     return sortedNewProduct;
   };
 
-  if (isDataLoading) {
-    <Loader />;
+  if (isDataLoading && filterPorducts().length === 0) {
+    return (
+      <div className="">
+        <Loader />
+      </div>
+    );
   }
   return (
     <div className="main-container">
@@ -61,7 +67,7 @@ const Products = () => {
             return <SignleProduct product={product} key={product._id} />;
           })
         ) : (
-          <p>No products Founds</p>
+          <p>No Products Founds</p>
         )}
       </div>
     </div>

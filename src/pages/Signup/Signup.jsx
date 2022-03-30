@@ -6,16 +6,17 @@ import {
   SET_USER,
 } from "../../constant/actionTypes";
 import { useAuth } from "../../context/AuthContextProvider";
+import { useDocumentTitle } from "../../hooks";
 import { signupApi } from "../../services";
 import "./signup.css";
-
+import { useLocation } from "react-router-dom";
 const Signup = () => {
+  useDocumentTitle("Men's Shop");
   const navigate = useNavigate();
   const {
     authUser: { loading },
     dispatchAuth,
   } = useAuth();
-
   const [user, setUser] = useState({
     name: "",
     email: "",

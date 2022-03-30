@@ -30,7 +30,7 @@ const OrderSummary = () => {
         <h4 className="text-bold">PRICE DETAILS</h4>
         <hr />
         <div className="flex-between">
-          <p>Price </p>
+          <p>Price {`(${cart.length} Items)`} </p>
           <p>{totalOriginalPrice} </p>
         </div>
         <div className="flex-between">

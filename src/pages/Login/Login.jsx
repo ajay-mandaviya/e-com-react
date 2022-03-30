@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContextProvider";
+import { useDocumentTitle } from "../../hooks";
 
 import "./login.css";
 
 const Login = () => {
+  useDocumentTitle("Men's Shop");
   const navigation = useNavigate();
   const {
     authUser: { loading },

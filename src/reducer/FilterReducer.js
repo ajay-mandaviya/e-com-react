@@ -55,6 +55,7 @@ export const FilterReducer = (state, action) => {
         byRating: 0,
         sort: "",
         priceRange: "",
+        filterByCategories: [],
       };
   }
 };

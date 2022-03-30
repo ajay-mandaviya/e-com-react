@@ -1,12 +1,13 @@
 import React from "react";
 import { useStateContext } from "../../context/DataContextProvider";
+import { useDocumentTitle } from "../../hooks";
 import "./wishlist.css";
 import WishListCard from "./WishListCard";
 const WishList = () => {
   const {
     data: { wishList },
   } = useStateContext();
-
+  useDocumentTitle("Your WishList");
   return (
     <div className="wishlist-page">
       <h2 className="text-center">My Wishlist</h2>

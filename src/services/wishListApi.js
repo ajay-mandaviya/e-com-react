@@ -37,7 +37,6 @@ export const addToWishList = async (dispatch, product, token) => {
       type: ADD_TO_WISHLIST,
       payload: wishlist,
     });
-    console.log("adding wishlist response ", wishlist);
   } catch (error) {
     console.log("Errror in add TO wishList", error);
   }
