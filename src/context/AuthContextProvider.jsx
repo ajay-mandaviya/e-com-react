@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { SET_AUTH_LOADING, SET_TOKEN, SET_USER } from "../constant/actionTypes";
 import { authReducer } from "../reducer";
 import { loginApi } from "../services/authApi";
-
+import { toast } from "react-toastify";
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
@@ -49,10 +49,12 @@ const AuthContextProvider = ({ children }) => {
         );
         dispatchAuth({ type: SET_TOKEN, payload: encodedToken });
         dispatchAuth({ type: SET_USER, payload: foundUser.firstName });
+        toast.success("Login Success");
         navigate("/product");
       }
     } catch (error) {
       dispatchAuth({ type: SET_AUTH_LOADING, payload: false });
+      toast.error("Something went wrong");
       console.log("ERRO IN LOGIN ", error);
     }
   };
@@ -73,6 +75,7 @@ const AuthContextProvider = ({ children }) => {
         payload: false,
       });
       navigate("/");
+      toast.success("Logout SuccessFully");
     }, 3000);
   };
   return (

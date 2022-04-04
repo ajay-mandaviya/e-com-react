@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   SET_AUTH_LOADING,
   SET_TOKEN,
@@ -9,7 +10,7 @@ import { useAuth } from "../../context/AuthContextProvider";
 import { useDocumentTitle } from "../../hooks";
 import { signupApi } from "../../services";
 import "./signup.css";
-import { useLocation } from "react-router-dom";
+
 const Signup = () => {
   useDocumentTitle("Men's Shop");
   const navigate = useNavigate();
@@ -59,8 +60,10 @@ const Signup = () => {
         "user",
         JSON.stringify({ token: encodedToken, userName: createdUser.name })
       );
+      toast.success("Signup Success");
       navigate("/product");
     } catch (error) {
+      toast.error("Something went wrong");
       console.log("Erroin while signup", error);
     }
   };

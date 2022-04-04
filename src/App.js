@@ -9,6 +9,8 @@ import { useStateContext } from "./context/DataContextProvider";
 import { useAuth } from "./context/AuthContextProvider";
 import { getUserCart, getUserWishList } from "./services";
 import { ProtectedRoutes } from "./pages/ProtectedRoutes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { dispatch } = useStateContext();
@@ -27,6 +29,17 @@ function App() {
   return (
     <>
       <Nav />
+      <ToastContainer
+        position="top-right"
+        autoClose={500}
+        hideProgressBar={false}
+        closeOnClick
+        rtl={false}
+        draggable={false}
+        pauseOnHover
+        limit="1"
+      />
+
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/product" element={<Products />} />

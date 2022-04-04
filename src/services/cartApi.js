@@ -5,6 +5,7 @@ import {
   REMOVE_FROM_CART,
   SET_CART,
 } from "../constant/actionTypes";
+import { toast } from "react-toastify";
 export const getUserCart = async (dispatch, token) => {
   try {
     const {
@@ -25,7 +26,6 @@ export const getUserCart = async (dispatch, token) => {
 };
 
 export const addToCartApi = async (dispatch, product, token) => {
-  console.log("data inside the api", product);
   try {
     const {
       data: { cart },
@@ -45,8 +45,10 @@ export const addToCartApi = async (dispatch, product, token) => {
       type: ADD_TO_CART,
       payload: cart,
     });
+    toast.success("Added In Cart");
   } catch (error) {
     console.log("Error in add to cart", error);
+    toast.error("Added In Cart Fail ");
   }
 };
 
@@ -71,14 +73,14 @@ export const removeFromcartApi = async (dispatch, id, token) => {
       type: REMOVE_FROM_CART,
       payload: cart,
     });
+    toast.success("Item Removed From Cart..");
   } catch (error) {
     console.log("Error in updateQtyFromCart service", error);
+    toast.error("Something Went Wrong");
   }
 };
 
 export const updateCartQty = async (action, dispatch, id, token) => {
-  console.log("id inside the api", id);
-  console.log("action inside the api", action);
   try {
     const {
       data: { cart },
