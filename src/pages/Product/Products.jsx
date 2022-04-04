@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Filters, Loader, SignleProduct } from "../../components";
 import "./product.css";
 import { useStateContext } from "../../context/DataContextProvider";
 import { useDocumentTitle } from "../../hooks";
 const Products = () => {
   useDocumentTitle("Men's Shop");
-
   const {
     data: { product, isDataLoading },
     filterState: {
@@ -17,7 +16,7 @@ const Products = () => {
       filterByCategories,
     },
   } = useStateContext();
-  console.log("loadig us", isDataLoading);
+
   const filterPorducts = () => {
     let sortedNewProduct = product;
     if (sort) {
@@ -53,7 +52,7 @@ const Products = () => {
 
   if (isDataLoading && filterPorducts().length === 0) {
     return (
-      <div className="">
+      <div>
         <Loader />
       </div>
     );
