@@ -61,6 +61,7 @@
   border: none;
   cursor: pointer;
   font-size: larger;
+  margin-top: 0.5rem;
   color: var(--white);
   font-weight: bold;
 }
