@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Loader } from "../../components";
 import { useAuth } from "../../context/AuthContextProvider";
 import { useDocumentTitle } from "../../hooks";
-
 import "./login.css";
 
 const Login = () => {
   useDocumentTitle("Men's Shop");
-  const navigation = useNavigate();
+
   const {
     authUser: { loading },
     loginWithUser,
@@ -27,10 +27,17 @@ const Login = () => {
   };
   const handleUserLogin = (e) => {
     e.preventDefault();
-    console.log(userLogin);
     loginWithUser(userLogin);
   };
 
+  const handleGuestLogin = (e) => {
+    const guestLogin = {
+      email: "adarshbalika@gmail.com",
+      password: "adarshbalika",
+    };
+    e.preventDefault();
+    loginWithUser(guestLogin);
+  };
   return (
     <div className="login-page">
       <div className="login-container">
@@ -73,8 +80,19 @@ const Login = () => {
               </div>
             </div>
             <div className="btn-contaiers">
-              <button type="submit" className="login-btn">
-                {loading ? "Logging in...." : "Login"}
+              <button
+                type="submit"
+                className="login-btn"
+                onClick={handleGuestLogin}
+              >
+                Guest Login
+              </button>
+              <button
+                type="submit"
+                className="login-btn"
+                onClick={handleUserLogin}
+              >
+                Login
               </button>
             </div>
             <Link to={"/signup"} className="check-account flex">

@@ -1,9 +1,10 @@
 import React from "react";
 import Rating from "../../components/Rating/Rating";
-import { MOVE_TO_CART } from "../../constant/actionTypes";
 import { useAuth, useStateContext } from "../../context";
 import { addToCartApi, removeToWishListApi } from "../../services";
+import { useNavigate } from "react-router-dom";
 const WishListCard = ({ product }) => {
+  const navigate = useNavigate();
   const {
     data: { cart },
     dispatch,
@@ -38,13 +39,20 @@ const WishListCard = ({ product }) => {
           </div>
         </div>
         {cart.some((cart) => cart._id === product._id) ? (
-          <button className="card-btn">Go to Cart</button>
+          <button
+            className="card-btn"
+            onClick={() => {
+              navigate("/cart");
+            }}
+          >
+            Go to Cart
+          </button>
         ) : (
           <button
             className="card-btn"
             onClick={() => {
               addToCartApi(dispatch, product, token);
-              removeToWishListApi(dispatch, product._id, token);
+              // removeToWishListApi(dispatch, product._id, token);
             }}
           >
             Move to Cart

@@ -1,9 +1,8 @@
 import React from "react";
-import { ADD_TO_CART, ADD_TO_WISHLIST } from "../../constant/actionTypes";
+import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContextProvider";
 import { useStateContext } from "../../context/DataContextProvider";
 import { useNavigate } from "react-router-dom";
-import { checkIsProductInWishlist } from "../../utils/arrayFilter";
 import Rating from "../Rating/Rating";
 import "./singleProduct.css";
 import {
@@ -25,16 +24,14 @@ const SignleProduct = ({ product }) => {
 
   const handleAddToCart = () => {
     if (!token) {
-      alert("you are not login");
-      navigate("/login");
+      toast.error("Please Login to Add to Cart ");
     } else {
       addToCartApi(dispatch, product, token);
     }
   };
   const handleAddToWishList = () => {
     if (!token) {
-      alert("you are not login");
-      navigate("/login");
+      toast.error("Please Login to Add to WishList ");
     } else {
       addToWishList(dispatch, product, token);
     }
@@ -100,7 +97,6 @@ const SignleProduct = ({ product }) => {
             {!product.inStock ? "Out of Stock" : "Add To Cart"}
           </button>
         )}
-        {/* <button className="card-btn">Add to cart</button> */}
       </div>
     </div>
   );

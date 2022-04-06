@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 import { useDocumentTitle } from "../../hooks";
 
 const Home = () => {
-  useDocumentTitle("Men's Shop")
+  useDocumentTitle("Men's Shop");
   return (
     <>
       <div className="category-container">
         {staticCategory.map((data, index) => {
           return (
-            <div key={index} className="category-item">
+            <Link to="/product" key={index} className="category-item">
               <img src={data.img} alt="not found" className="responsive-img" />
-            </div>
+            </Link>
           );
         })}
       </div>
