@@ -22,7 +22,6 @@ const CartProduct = ({ product }) => {
   const {
     authUser: { token },
   } = useAuth();
-  console.log("wishlist in cart", wishList);
   return (
     <div className="card-horizontal">
       <div className="card-img">

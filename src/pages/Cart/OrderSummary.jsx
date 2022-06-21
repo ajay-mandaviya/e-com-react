@@ -22,8 +22,6 @@ const OrderSummary = () => {
     return acc + (product.originalPrice - product.price) * qty;
   }, 0);
 
-  console.log("total price is", totalOriginalPrice);
-
   return (
     <div className="summary-card">
       <div className="price-details">
