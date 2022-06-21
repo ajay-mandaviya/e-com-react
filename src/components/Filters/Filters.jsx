@@ -124,6 +124,7 @@ const Filters = () => {
             <input
               type="checkbox"
               value={inStock}
+              checked={inStock}
               onChange={() => {
                 filterDispatch({
                   type: FILTER_BY_STOCK,
@@ -137,6 +138,7 @@ const Filters = () => {
           <label>
             <input
               type="checkbox"
+              checked={fastDelivery}
               onChange={(e) => {
                 filterDispatch({
                   type: FILTER_BY_DELIVERY,

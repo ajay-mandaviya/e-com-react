@@ -18,6 +18,7 @@ const DataContextProvider = ({ children }) => {
     sort: "",
     priceRange: "",
     filterByCategories: [],
+    searchBy: "",
   });
 
   return (

@@ -14,6 +14,7 @@ const Products = () => {
       sort,
       priceRange,
       filterByCategories,
+      searchBy,
     },
   } = useStateContext();
 
@@ -47,6 +48,11 @@ const Products = () => {
         filterByCategories.includes(product.categoryName)
       );
     }
+    if (searchBy) {
+      sortedNewProduct = sortedNewProduct.filter((product) =>
+        product.name.toLowerCase().includes(searchBy.toLowerCase())
+      );
+    }
     return sortedNewProduct;
   };
 
@@ -66,7 +72,7 @@ const Products = () => {
             return <SignleProduct product={product} key={product._id} />;
           })
         ) : (
-          <p>No Products Founds</p>
+          <p>No Products Founds In Selected Category</p>
         )}
       </div>
     </div>

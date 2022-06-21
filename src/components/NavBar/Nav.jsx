@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../../context/DataContextProvider";
 import { useAuth } from "../../context/AuthContextProvider";
+import { SET_SEARCH_PRODUCTS } from "../../constant/actionTypes";
 
 const Nav = () => {
   const {
     authUser: { token },
     logoutAuth,
   } = useAuth();
+
+  const {
+    filterState: { searchBy },
+    filterDispatch,
+  } = useStateContext();
 
   const {
     data: { cart, wishList },
@@ -31,7 +37,18 @@ const Nav = () => {
       </div>
       <div className="search-input">
         <i className="fa-solid fa-magnifying-glass"></i>
-        <input type="search" placeholder="Search...." />
+        <input
+          type="search"
+          placeholder="Search...."
+          value={searchBy}
+          onChange={(e) => {
+            filterDispatch({
+              type: SET_SEARCH_PRODUCTS,
+              payload: e.target.value,
+            });
+            navigate("/product");
+          }}
+        />
       </div>
       <div className="header-profile">
         <div className="nav-mobile">

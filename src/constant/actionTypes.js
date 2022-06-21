@@ -23,6 +23,7 @@ export const FILTER_BY_STOCK = "FILTER_BY_STOCK";
 export const FILTER_BY_DELIVERY = "FILTER_BY_DELIVERY";
 export const FILTER_BY_RATING = "FILTER_BY_RATING";
 export const CLEAR_FILTER = "CLEAR_FILTER";
+export const SET_SEARCH_PRODUCTS = "SET_SEARCH_PRODUCTS";
 // /
 
 export const SET_TOKEN = "SET_TOKEN";
