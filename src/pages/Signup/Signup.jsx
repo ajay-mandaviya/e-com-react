@@ -79,6 +79,7 @@ const Signup = () => {
               <label htmlFor="nameInput">Name</label>
               <input
                 type="text"
+                required
                 name="name"
                 value={user.name}
                 onChange={handleInputChange}
@@ -90,6 +91,7 @@ const Signup = () => {
               <label htmlFor="emailInput">Email</label>
               <input
                 type="email"
+                required
                 placeholder="Enter your Email"
                 id="emailInput"
                 name="email"
@@ -103,6 +105,7 @@ const Signup = () => {
                 type="password"
                 placeholder="Enter your Password"
                 id="passwordInput"
+                required
                 name="password"
                 value={user.password}
                 onChange={handleInputChange}
@@ -110,7 +113,7 @@ const Signup = () => {
             </div>
             <div className="user-option">
               <div>
-                <input type="checkbox" id="save-chechkbox" />
+                <input required type="checkbox" id="save-chechkbox" />
                 <label htmlFor="save-chechkbox" className="checkbox-lable">
                   Accept Terms & Condition
                 </label>

@@ -25,6 +25,7 @@ const Login = () => {
       [name]: value,
     });
   };
+
   const handleUserLogin = (e) => {
     e.preventDefault();
     loginWithUser(userLogin);
@@ -55,6 +56,7 @@ const Login = () => {
                 name="email"
                 value={userLogin.email}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -66,6 +68,7 @@ const Login = () => {
                 value={userLogin.password}
                 name="password"
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div className="user-option">
@@ -88,7 +91,13 @@ const Login = () => {
                 Guest Login
               </button>
               <button
-                type="submit"
+                disabled={userLogin.email === "" || userLogin.password === ""}
+                style={{
+                  cursor:
+                    userLogin.email === "" || userLogin.password === ""
+                      ? "not-allowed"
+                      : "",
+                }}
                 className="login-btn"
                 onClick={handleUserLogin}
               >
