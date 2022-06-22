@@ -52,7 +52,7 @@ const WishListCard = ({ product }) => {
             className="card-btn"
             onClick={() => {
               addToCartApi(dispatch, product, token);
-              // removeToWishListApi(dispatch, product._id, token);
+              removeToWishListApi(dispatch, product._id, token);
             }}
           >
             Move to Cart

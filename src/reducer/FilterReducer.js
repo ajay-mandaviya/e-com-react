@@ -7,6 +7,7 @@ import {
   FILTER_SORT_BY_PRICE,
   FILTER_BY_DELIVERY,
   FILTER_BY_CATEGORIES,
+  SET_SEARCH_PRODUCTS,
 } from "../constant/actionTypes";
 
 export const FilterReducer = (state, action) => {
@@ -27,10 +28,14 @@ export const FilterReducer = (state, action) => {
         priceRange: action.payload,
       };
     case FILTER_SORT_BY_PRICE:
-      console.log("filter by sort to price", action.payload);
       return {
         ...state,
         sort: action.payload,
+      };
+    case SET_SEARCH_PRODUCTS:
+      return {
+        ...state,
+        searchBy: action.payload,
       };
     case FILTER_BY_DELIVERY:
       return {

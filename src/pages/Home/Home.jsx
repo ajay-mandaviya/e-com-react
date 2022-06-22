@@ -13,9 +13,15 @@ const Home = () => {
       <div className="category-container">
         {staticCategory.map((data, index) => {
           return (
-            <Link to="/product" key={index} className="category-item">
-              <img src={data.img} alt="not found" className="responsive-img" />
-            </Link>
+            <>
+              <Link to="/product" key={index} className="category-item">
+                <img
+                  src={data.img}
+                  alt="not found"
+                  className="responsive-img"
+                />
+              </Link>
+            </>
           );
         })}
       </div>
